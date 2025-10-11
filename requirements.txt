@@ -1,7 +1,6 @@
 streamlit
-ultralytics==8.2.80
+tensorflow
+ultralytics
+pillow
 opencv-python-headless
 numpy
-pillow
-torch
-torchvision
