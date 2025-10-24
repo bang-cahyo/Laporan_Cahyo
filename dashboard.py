@@ -8,7 +8,6 @@ import io
 import time
 import os
 import cv2
-from utils import letterbox_image, get_downloadable_image
 from io import BytesIO
 
 # Konfigurasi Halaman
@@ -111,15 +110,9 @@ footer {
 """, unsafe_allow_html=True)
 
 # Utility Functions
-def get_downloadable_image(np_img):
-    """Convert numpy array to downloadable PNG bytes."""
-    image = Image.fromarray(np_img)
-    buf = io.BytesIO()
-    image.save(buf, format="PNG")
-    return buf.getvalue()
-
 def letterbox_image(img, target_size=(640,640)):
-    """Resize image keeping aspect ratio with padding."""
+    import numpy as np
+    import cv2
     h, w = img.shape[:2]
     target_w, target_h = target_size
     scale = min(target_w/w, target_h/h)
@@ -131,6 +124,13 @@ def letterbox_image(img, target_size=(640,640)):
     canvas[top:top+nh, left:left+nw, :] = img_resized
     return canvas
 
+def get_downloadable_image(np_img):
+    from PIL import Image
+    import io
+    image = Image.fromarray(np_img)
+    buf = io.BytesIO()
+    image.save(buf, format="PNG")
+    return buf.getvalue()
 # Load YOLO Model
 @st.cache_resource
 def load_model():
