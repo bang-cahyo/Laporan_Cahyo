@@ -4,11 +4,11 @@ import streamlit as st
 from ultralytics import YOLO
 import numpy as np
 from PIL import Image, ImageOps
-import io
 import time
 import os
-import cv2
 from io import BytesIO
+import io
+import cv2
 
 # Konfigurasi Halaman
 st.set_page_config(
