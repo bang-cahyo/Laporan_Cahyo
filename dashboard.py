@@ -1,6 +1,6 @@
 
 # dashboard.py - YOLO Face Detection
-import streamlit as st
+import streaxczczdcsmlit as st
 from ultralytics import YOLO
 import numpy as np
 from PIL import Image, ImageOps
